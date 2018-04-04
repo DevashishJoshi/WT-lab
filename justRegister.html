@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+      <title>
+        Patient Register
+      </title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+      <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/form-elements.css">
+      <link rel="stylesheet" href="css/style.css">
+
+      <link rel="shortcut icon" href="ico/favicon.png">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+        <div class="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Sign up now</h3>
+                                        <p>Fill in the form below to get instant access:</p>
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-pencil"></i>
+                                    </div>
+                                </div>
+                                <div class="form-bottom">
+                                    <form onsubmit="return validate()" name="register" method="post" action="index.html">
+                                        <div class="form-group">
+                                            <label for="form-first-name">Name</label>
+                                          <input type="text" name="fullname" placeholder="Full name..." class="form-first-name form-control" id="full_name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-email">Email</label>
+                                             <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-password">Password</label>
+                                             <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="password">
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="sr-only" for="form-first-name">Gender</label>
+                                            <select name="gender" style='width:100px' id="gender">
+                                              <option value="Male">Male</option>
+                                              <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-first-name">Blood Group</label>
+                                            <select name="blood_group" style='width:100px' id="blood_group">
+                                              <option value="A+">A+</option>
+                                              <option value="A-">A-</option>
+                                              <option value="B+">B+</option>
+                                              <option value="B-">B-</option>
+                                              <option value="AB+">AB+</option>
+                                              <option value="AB-">AB-</option>
+                                              <option value="O+">O+</option>
+                                              <option value="O-">O-</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-first-name">D.O.B.</label>
+                                            <input type="date" name="dob" placeholder="D.O.B." class="form-first-name form-control" id="dob">
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="sr-only" for="form-first-name">Phone Number</label>
+                                            <input type="text" name="phoneno" placeholder="PhoneNo..." class="form-first-name form-control" id="phone_number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-first-name">Address</label>
+                                            <input type="text" name="address" placeholder="Address..." class="form-first-name form-control" id="address">
+                                        </div>
+                                          <button type="submit" class="btn">Sign me up!</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+        function val_name(fullname,type){
+        	 if( fullname == "" ){
+              alert( "Please provide your valid "+type);
+              return false;
+           }
+           else{
+             	if(/^[A-Za-z\s]+$/.test(fullname)){
+                //alert("Valid "+type+"!");
+             		 return true;
+             	}
+              else{
+               alert(type +' must have alphabet characters only');
+               return false;
+              }
+           }
+         }
+
+      function val_number(numb){
+        	var pattern=/^[0-9]{10}$/;
+        	if(numb==""){
+        	    alert( "Please provide a valid phone number");
+        	    return false;
+        	}
+        	else{
+          		if(pattern.test(numb)){
+          			   //alert("Valid phone number");
+          			   return true;
+          		}
+           		else{
+                  alert("Invalid phone number");
+                  return false;
+              }
+        	}
+      }
+
+      function val_pass(pass){
+        	if(pass.length<8 || pass.length>20){
+              alert("Password must be min 8 and max 20 characters long!");
+              return false;
+        	}
+          else {
+              return true;
+          }
+      }
+
+      function val_email(email){
+          if( email == "" ){
+              alert( "Please provide your Email!" );
+              return false;
+          }
+          else{
+              var re =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+              if(!re.test(email)){
+                  alert( "Invalid Email!" );
+                  return false;
+              }
+              else{
+                  //alert('valid email');
+                  return true;
+              }
+          }
+      }
+
+      function validate(){
+          var fullname=document.register.fullname.value;
+          var email=document.register.email.value;
+          var password=document.register.password.value;
+          var phoneno=document.register.phoneno.value;
+          var valid=false;
+
+          if(val_name(fullname,'Name')){
+              if(val_email(email)){
+                  if(val_pass(password)){
+                      if(val_number(phoneno)){
+                            valid=true;
+                      }
+                  }
+              }
+          }
+
+          if(valid==true){
+              alert("Your form has been accepted!");
+              return true;
+          }
+          else{
+              return false;
+          }
+      }
+
+        </script>
+
+    </body>
+
+
+
+</html>
